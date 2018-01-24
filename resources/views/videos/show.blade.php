@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Course Name - Trailer</h2>
+                    <h2>Video Name</h2>
                 </div>
             </div>
         </div>
@@ -54,8 +54,9 @@
                         
 
                             <div class="heading">
-                                <h3>About this Course</h3>
-                                <button type="button" class="btn btn-lg btn-template-main" style="float: right; margin-top: 20px;">Start Course</button>
+                                <h3>Teacher's Notes</h3>
+                                <button type="button" class="btn btn-lg btn-template-main" style="float: right; margin-top: 20px;">Next</button>
+                                <button type="button" class="btn btn-lg btn-template-main" style="float: right; margin-top: 20px;">Prev.</button>
                             </div>
 
                             <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited furniture sweetness he arranging. Me tedious so to behaved

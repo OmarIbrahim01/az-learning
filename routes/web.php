@@ -12,8 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('courses/video');
+    return redirect('/library');
 });
+
+Route::get('/library',[
+    'as' => 'library.index',
+    'uses' => 'LibraryController@index'
+]);
+
+Route::get('/library/category/{name}',[
+    'as' => 'library.category',
+    'uses' => 'LibraryController@category'
+]);
+
+Route::get('/library/{course}',[
+    'as' => 'courses.show',
+    'uses' => 'CoursesController@show'
+]);
+
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -23,3 +39,9 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/items/showall/{name}',[
+    'as' => 'items.show_all',
+    'uses' => 'ItemsController@showAll'
+]);
