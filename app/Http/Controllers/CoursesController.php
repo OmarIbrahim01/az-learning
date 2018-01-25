@@ -11,6 +11,6 @@ class CoursesController extends Controller
     {
     	$course_id = Course::select('id')->where('name', $name)->first();
     	$course = Course::findOrfail($course_id->id);
-    	return view('courses.show')->withCourse($course);
+    	return view('courses.show')->withCourse($course)->withVideos($course->videos->all());
     }
 }

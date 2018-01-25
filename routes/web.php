@@ -31,6 +31,11 @@ Route::get('/library/{course}',[
 ]);
 
 
+Route::get('/library/{course}/{video}',[
+    'as' => 'video.show',
+    'uses' => 'VideosController@show'
+]);
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -41,7 +46,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/items/showall/{name}',[
-    'as' => 'items.show_all',
-    'uses' => 'ItemsController@showAll'
-]);
+// Route::get('/items/showall/{name}',[
+//     'as' => 'items.show_all',
+//     'uses' => 'ItemsController@showAll'
+// ]);

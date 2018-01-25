@@ -72,7 +72,7 @@ _________________________________________________________ -->
                         <ul class="nav nav-pills nav-stacked category-menu">
                             <li>
                                 @foreach($course->videos->sortBy('order') as $video)
-                                <a href=""><i class="fa fa-play" aria-hidden="true"></i> {{$video->name}} - {{$course->name}}</a>
+                                <a href="{{route('video.show', [$course->name, $video->name])}}"><i class="fa fa-play" aria-hidden="true"></i> {{$video->name}} - {{$course->name}}</a>
                                 @endforeach
                             </li>
                         </ul>

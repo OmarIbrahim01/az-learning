@@ -93,7 +93,31 @@
                                 </li>   
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle">About</a>
-                                </li>                                                   
+                                </li> 
+
+                                {{-- IF Guest --}}
+                                @guest
+                                <li class="dropdown">
+                                    <a href="{{ route('login') }}" class="dropdown-toggle">Login</a>
+                                </li> 
+                                <li class="dropdown">
+                                    <a href="{{ route('register') }}" class="dropdown-toggle">Register</a>
+                                </li>        
+
+                                {{-- IF Auth --}}
+                                @else
+                                <li class="dropdown">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                @endguest                                          
                                 
                             </ul>
 

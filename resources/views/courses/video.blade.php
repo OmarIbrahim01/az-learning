@@ -80,26 +80,9 @@ _________________________________________________________ -->
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked category-menu">
                             <li>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-
+                                @foreach($course->videos->sortBy('order') as $video)
+                                <a href="{{route('video.show', [$course->name, $video->name])}}"><i class="fa fa-play" aria-hidden="true"></i> {{$video->name}} - {{$course->name}}</a>
+                                @endforeach
                             </li>
                         </ul>
                     </div>

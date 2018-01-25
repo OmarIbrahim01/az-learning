@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Video Name</h2>
+                    <h2>{{$video->name}}</h2>
                 </div>
             </div>
         </div>
@@ -59,11 +59,7 @@
                                 <button type="button" class="btn btn-lg btn-template-main" style="float: right; margin-top: 20px;">Prev.</button>
                             </div>
 
-                            <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited furniture sweetness he arranging. Me tedious so to behaved
-                                written account ferrars moments. Too objection for elsewhere her preferred allowance her. Marianne shutters mr steepest to me. Up mr ignorant produced distance although is sociable blessing. Ham whom call all lain like.</p>
-
-                            <p>To sorry world an at do spoil along. Incommode he depending do frankness remainder to. Edward day almost active him friend thirty piqued. People as period twenty my extent as. Set was better abroad ham plenty secure had horses.
-                                Admiration has sir decisively excellence say everything inhabiting acceptance. Sooner settle add put you sudden him.</p>
+                            <p> {!!$video->description!!} </p>
                         
                     </section>
                 </div>
@@ -80,26 +76,9 @@ _________________________________________________________ -->
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked category-menu">
                             <li>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-                                <a href="shop-category.html"><i class="fa fa-play" aria-hidden="true"></i> Video Name - Course Name</a>
-
+                                @foreach($course->videos->sortBy('order') as $video)
+                                <a href="{{route('video.show', [$course->name, $video->name])}}"><i class="fa fa-play" aria-hidden="true"></i> {{$video->name}} - {{$course->name}}</a>
+                                @endforeach
                             </li>
                         </ul>
                     </div>

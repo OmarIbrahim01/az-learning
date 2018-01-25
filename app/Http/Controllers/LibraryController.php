@@ -8,6 +8,12 @@ use App\Category;
 
 class LibraryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); //apply middleware to all methods of this controller
+    }
+
+
     public function index()
     {
     	$courses = Course::all();
