@@ -86,10 +86,10 @@
                             <ul class="nav navbar-nav navbar-right">
 
                                 <li class="dropdown active">
-                                    <a href="" >Home</a>
+                                    <a href="/" >Home</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle">Library</a>
+                                    <a href="/" class="dropdown-toggle">Library</a>
                                 </li>   
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle">About</a>
