@@ -10,9 +10,9 @@ class VideosController extends Controller
 {
 
 	public function __construct()
-    {
-        $this->middleware('auth'); //apply middleware to all methods of this controller
-    }
+  {
+      $this->middleware(['auth', 'subscribed']); //apply middleware to all methods of this controller
+  }
 
   public function show($course_name, $video_name)
     {

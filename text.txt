@@ -1,0 +1,2 @@
+$end_date = Carbon::create($activated_at);
+$end_date->addMonths($subscription_duration);

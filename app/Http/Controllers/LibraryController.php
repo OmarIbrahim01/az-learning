@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Category;
 
+
 class LibraryController extends Controller
 {
     public function __construct()
     {   
-        $this->middleware('auth'); //apply middleware to all methods of this controller
+        // $this->middleware('auth'); //apply middleware to all methods of this controller
     }
 
 
     public function index()
-    {
+    {      
     	$courses = Course::all();
     	return view('library.index')->withCourses($courses);
     }
