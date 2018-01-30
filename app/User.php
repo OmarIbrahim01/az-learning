@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
+use App\Subscription;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -42,5 +44,39 @@ class User extends \TCG\Voyager\Models\User
     {
         $user = User::find($id);
         return $user->subscription->where('active', 1)->first();
+    }
+
+    public function HasRequestedSubscription($id)  // User::incomplete()->get();
+    {
+        $user = User::find($id);
+        return $user->subscription->where('end_date', null)->first();
+    }
+
+    public function isAdmin($id)
+    {
+        if(Auth::check()){
+            $user = User::findOrFail($id);
+            if ($user->role_id == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+            return false;
+        }
+    }
+
+    public function isSubAdmin($id)
+    {
+        if(Auth::check()){
+            $user = User::findOrFail($id);
+            if ($user->role_id == 2) {
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+            return false;
+        }
     }
 }

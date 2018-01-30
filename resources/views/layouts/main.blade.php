@@ -68,7 +68,7 @@
                     <div class="container">
                         <div class="navbar-header">
 
-                            <a class="navbar-brand home" href="index.html">
+                            <a class="navbar-brand home" href="/">
                                 <img src="/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
                                 <img src="/img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                             </a>
@@ -83,6 +83,23 @@
 
                         <div class="navbar-collapse collapse" id="navigation">
 
+                            <ul class="nav navbar-nav navbar-left">
+                                @if(Auth::check() && Auth::user()->isAdmin(Auth::id()))
+                                    <li class="dropdown">
+                                        <a href="/admin" >Admin Panel</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="/manage_subscriptions" >Subscriptions Panel</a>
+                                    </li>
+                                @endif
+                                @if(Auth::check() && Auth::user()->isSubAdmin(Auth::id()))
+                                    <li class="dropdown">
+                                        <a href="/manage_subscriptions" >Subscriptions Panel</a>
+                                    </li>
+                                @endif
+
+                            </ul>
+
                             <ul class="nav navbar-nav navbar-right">
 
                                 <li class="dropdown active">
@@ -94,6 +111,9 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle">About</a>
                                 </li> 
+                                <li class="dropdown">
+                                    <a href="/subscription/create" >Subscription</a>
+                                </li>
 
                                 {{-- IF Guest --}}
                                 @guest
@@ -117,7 +137,11 @@
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
-                                @endguest                                          
+                                <li class="dropdown">
+                                    <a href="/subscription/create" >{{Auth::user()->name}}</a>
+                                </li>
+                                @endguest 
+
                                 
                             </ul>
 
@@ -170,7 +194,7 @@ _________________________________________________________ -->
                     <h3>Do you want cool website like this one?</h3>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <a href="#" class="btn btn-template-transparent-primary">Buy this template now</a>
+                    <a href="#" class="btn btn-template-transparent-primary">Contact Me Now</a>
                 </div>
             </div>
         </div>
@@ -226,9 +250,10 @@ _________________________________________________________ -->
     <script src="/js/videoplayer.js"></script>
 
 
+
     <!-- owl carousel -->
     <script src="js/owl.carousel.min.js"></script>
-    
+    @yield('js')
 
 
 
