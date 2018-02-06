@@ -2,3 +2,11 @@
 .container {
     width: 80%;
 }
+
+#navbar {
+	background-color: #484747;
+}
+
+/*#navbar a {
+	color: #fff;
+}*/

@@ -34,6 +34,15 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany('App\Subscription');
     }
 
+    public function history()
+  {
+    return $this->hasMany('App\History');
+  }
+
+
+
+
+
     public function HadSubscription($id)  // User::incomplete()->get();
     {
         $user = User::find($id);
@@ -42,8 +51,12 @@ class User extends \TCG\Voyager\Models\User
 
     public function HasActiveSubscription($id)  // User::incomplete()->get();
     {
-        $user = User::find($id);
-        return $user->subscription->where('active', 1)->first();
+        $user = User::find($id)->subscription->where('active', 1)->first();
+        if (isset($user)){
+            return $user;
+        }else {
+            return false;
+        }
     }
 
     public function HasRequestedSubscription($id)  // User::incomplete()->get();

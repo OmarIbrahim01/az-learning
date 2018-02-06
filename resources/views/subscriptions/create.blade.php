@@ -64,16 +64,17 @@
             
 
     </section>
-
-    <div class="col-md">
+    
+    <section style="margin-bottom: 10px;">
+    <div class="col-md-6">
         <div class="box">
             <h2 class="text-uppercase">Select Package</h2>
 
             <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
             <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
 
-            <hr style="margin-right: 70%">
-            <div class="col-md" style="margin-right: 70%;">
+            <hr>
+            <div class="col-md" style="margin-right: 30%;">
                 <form method="POST" action="/subscription">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -86,16 +87,43 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="mobile">Mobile Number</label>
+                        <label for="name-login">Payment Method</label>
+                        <select class="form-control" name="payment_method">
+                            <option disabled selected value="0">Select Payment Method</option>
+                            @foreach($paymentMethods as $payment_method)
+                                <option value="{{$payment_method->id}}">{{$payment_method->name}} / {{$payment_method->number}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Your Mobile Number</label>
                         <input type="text" class="form-control" name="mobile">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Submit Package</button>
+                        <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Subscribe</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <div class="col-md-6">
+        <div class="box" style="border-bottom: none;">
+            <h2 class="text-uppercase">Payment Methods</h2>
+
+            <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+
+            <img src="/img/vodafon.png" class="col-md-6">
+            <img src="/img/etislat.jpg" class="col-md-6">
+            <img src="/img/orange.png" class="col-md-6">
+            
+        </div>
+    </div>
+
+
+</section>
+
+
 
 </div>
 

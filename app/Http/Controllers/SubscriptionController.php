@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use App\PaymentMethod;
 
 class SubscriptionController extends Controller
 {
@@ -30,7 +31,8 @@ class SubscriptionController extends Controller
     public function create()
     {
         $packages = Plan::all();
-        return view('subscriptions.create')->withPackages($packages);
+        $payment_methods = PaymentMethod::all();
+        return view('subscriptions.create')->withPackages($packages)->withPaymentMethods($payment_methods);
     }
 
     /**
@@ -54,8 +56,9 @@ class SubscriptionController extends Controller
 
         $subscription->user_id = Auth::id();
         $subscription->plan_id = request('package');
+        $subscription->payment_method_id = request('payment_method');
         $subscription->mobile = request('mobile');
-
+        
         $subscription->save();
         return redirect('/');
     }

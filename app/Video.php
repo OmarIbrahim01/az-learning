@@ -12,5 +12,10 @@ class Video extends Model
 	{
 		return $this->belongsTo('App\Course');
 	}
+
+	public function history()
+  {
+  	return $this->hasMany('App\History');
+  }
     
 }

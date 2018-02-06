@@ -69,7 +69,7 @@
                         <div class="navbar-header">
 
                             <a class="navbar-brand home" href="/">
-                                <img src="/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
+                                <img src="/img/logo2.png" alt="Universal logo" class="hidden-xs hidden-sm">
                                 <img src="/img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                             </a>
                             <div class="navbar-buttons">
@@ -83,66 +83,80 @@
 
                         <div class="navbar-collapse collapse" id="navigation">
 
-                            <ul class="nav navbar-nav navbar-left">
-                                @if(Auth::check() && Auth::user()->isAdmin(Auth::id()))
-                                    <li class="dropdown">
-                                        <a href="/admin" >Admin Panel</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="/manage_subscriptions" >Subscriptions Panel</a>
-                                    </li>
-                                @endif
-                                @if(Auth::check() && Auth::user()->isSubAdmin(Auth::id()))
-                                    <li class="dropdown">
-                                        <a href="/manage_subscriptions" >Subscriptions Panel</a>
-                                    </li>
-                                @endif
+                            @if(Auth::check() && Auth::user()->role_id < 10)
+                                <ul class="nav navbar-nav navbar-left">
 
-                            </ul>
+                                    <li class="dropdown">
+                                        <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-cog"></i>Manage<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                             @if(Auth::check() && Auth::user()->isAdmin(Auth::id()))
+                                                <li class="dropdown">
+                                                    <a href="/admin" >Admin Panel</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="/manage_subscriptions" >Subscriptions Panel</a>
+                                                </li>
+                                            @endif
+                                            @if(Auth::check() && Auth::user()->isSubAdmin(Auth::id()))
+                                                <li class="dropdown">
+                                                    <a href="/manage_subscriptions" >Subscriptions Panel</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            @endif
 
                             <ul class="nav navbar-nav navbar-right">
 
                                 <li class="dropdown active">
-                                    <a href="/" >Home</a>
+                                    <a href="/home" style="color: white;">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="/" class="dropdown-toggle">Library</a>
+                                    <a href="/" class="dropdown-toggle" style="color: white;">Library</a>
                                 </li>   
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle">About</a>
+                                    <a href="#" class="dropdown-toggle" style="color: white;">About</a>
                                 </li> 
-                                <li class="dropdown">
-                                    <a href="/subscription/create" >Subscription</a>
-                                </li>
 
                                 {{-- IF Guest --}}
                                 @guest
                                 <li class="dropdown">
-                                    <a href="{{ route('login') }}" class="dropdown-toggle">Login</a>
+                                    <a href="{{ route('login') }}" class="dropdown-toggle" style="color: white;">Login</a>
                                 </li> 
                                 <li class="dropdown">
-                                    <a href="{{ route('register') }}" class="dropdown-toggle">Register</a>
+                                    <a href="{{ route('register') }}" class="dropdown-toggle" style="color: white;">Register</a>
                                 </li>        
 
                                 {{-- IF Auth --}}
                                 @else
-                                <li class="dropdown">
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
+                                @if(!Auth::user()->HasActiveSubscription(Auth::id()))
                                 <li class="dropdown">
-                                    <a href="/subscription/create" >{{Auth::user()->name}}</a>
+                                    <a href="" class="dropdown-toggle" style="color: white;">Subscribe</a>
+                                </li>   
+                                @endif
+
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-user"></i>{{Auth::user()->name}} <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/subscription/create">Subscription</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        
+                                    </ul>
                                 </li>
+
                                 @endguest 
-
-                                
+  
                             </ul>
 
                         </div>

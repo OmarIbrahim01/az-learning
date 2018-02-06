@@ -16,6 +16,11 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+//Home
+Route::get('/home',[
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
 
 //library
 Route::get('/', function () {
